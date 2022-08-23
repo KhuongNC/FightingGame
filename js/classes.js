@@ -43,9 +43,23 @@ class Sprite {
   }
 }
 
-class Fighter {
-  constructor({ position, velocity, color = "red", offset }) {
-    this.position = position;
+class Fighter extends Sprite {
+  constructor({
+    position,
+    velocity,
+    color = "red",
+    offset,
+    imageSrc,
+    scale = 1,
+    framesMax = 1,
+  }) {
+    super({
+      position,
+      imageSrc,
+      scale,
+      framesMax,
+    });
+
     this.velocity = velocity;
     this.height = 150;
     this.width = 50;
@@ -62,6 +76,9 @@ class Fighter {
     this.color = color;
     this.isAttacking;
     this.health = 100;
+    this.framesCurrent = 0;
+    this.framesElapsed = 0;
+    this.framesHold = 10;
   }
 
   draw() {
